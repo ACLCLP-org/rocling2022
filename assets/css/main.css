@@ -58,6 +58,20 @@ ul li, ol li {
   list-style: none;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+tr { 
+    border: solid;
+    border-width: 1px 0;
+}
+
+td { 
+    border: solid;
+    border-width: 1px 0;
+}
+
 .hero-heading {
   font-size: 40px;
   font-weight: 700;

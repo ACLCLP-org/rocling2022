@@ -1473,6 +1473,8 @@
                     </div>
                     <!-- row End -->
                     <div class="blankDiv"></div>
+                    <h4>How to participate? Registration <a href="https://docs.google.com/forms/d/e/1FAIpQLSf17pTkYKzuDV7zkqhK4NvD5v6EnxlNRdfmmWNs3WcLtMMveA/viewform">here</a></h4>
+                    <div class="blankDiv"></div>
                     <h3>I. Background</h3>
                     <p class="justify">Named Entity Recognition (NER) is a fundamental task in information extraction that locates the mentions of named entities and classifies them (e.g., person, organization and location) in unstructured texts. The NER task has traditionally been solved as a sequence labeling problem, where entity boundaries and category labels are jointly predicted. Various methods have been proposed to tackle this research problem, including Hidden Markov Models (HMM) (Ponomareva et al., 2007), Maximum Entropy Markov Models (MEMM) (Chieu and Ng, 2003) and Conditional Random Field (CRF) (Wei et al., 2015). Recently, neural networks have been shown to achieve impressive results. The current state-of-the-art for English NER has been achieved by using LSTM (Long Short-Term Memory)- CRF based networks (Chiu and Nichols, 2016; Lample et al., 2016; Ma and Hovy, 2016; Liu et al., 2018). <br /><br />Chinese NER is more difficult to process than English NER. Chinese language is logographic and provides no conventional features like capitalization. In addition, due to a lack of delimiters between characters, Chinese NER is correlated with word segmentation, and named entity boundaries are also word boundaries. However, incorrectly segmented entity boundaries will cause error propagation in NER. For example, in a particular context, a disease entity “思覺失調症” (schizophrenia) may be incorrectly segmented into three words: “思覺” (thinking and feeling), “失調” (disorder) and “症” (disease). Hence, it has been shown that character-based methods outperform word-based approaches for Chinese NER (He and Wang, 2008; Li et al., 2014; Zhang and Yang, 2018).<br /><br/>In the digital era, healthcare information-seeking users usually search and browse web content in click-through trails to obtain healthcare-related information before making a doctor’s appointment for diagnosis and treatment. Web texts are valuable sources to provide healthcare information such as health-related news, digital health magazines and medical question/answer forums. Domain-specific healthcare information includes many proper names, mainly as named entities. For example, “三酸甘油酯” (triglyceride) is a chemical found in the human body; “電腦斷層掃描” (computed tomography; CT) is medical imaging procedure that uses computer-processed combinations of X-ray measurements to produce tomographic images of specific areas of the human body, and “靜脈免疫球蛋白注射” (intravenous immunoglobulin; IVIG) is a kind of treatment for avoiding infections. In summary, Chinese healthcare NER is an important and essential task in natural language processing to automatically identify healthcare entities such as symptoms, chemicals, diseases, and treatments for machine reading and understanding. </p>
                     <div class="blankDiv"></div>
@@ -1486,11 +1488,70 @@
                         ●	Input: 如何治療胃食道逆流症？<br />
                         ●	Output: O, O, O, O, B-DISE, I-DISE, I-DISE, I-DISE, I-DISE, I-DISE, O
                     </p>
+                    <br/>
+                    <p>Table 1. Named Entity Types with Descriptions and Examples</p>
+                    <table>
+                        <tr>
+                            <td><b>Entity Type</b></td>
+                            <td><b>Description</b></td>
+                            <td><b>Examples</b></td>
+                        </tr>
+                        <tr>
+                            <td>Body (BODY)</td>
+                            <td>The whole physical structure that forms a person or animal including biological cells, organizations, organs and systems.</td>
+                            <td>“細胞核” (nucleus), “神經組織” (nerve tissue), “左心房” (left atrium),  “脊髓” (spinal cord), “呼吸系統” (respiratory system)</td>
+                        </tr>
+                        <tr>
+                            <td>Symptom (SYMP)</td>
+                            <td>Any feeling of illness or physical or mental change that is caused by a particular disease.</td>
+                            <td>“流鼻水” (rhinorrhea), “咳嗽” (cough), “貧血” (anemia), “失眠” (insomnia), “心悸” (palpitation), “耳鳴” (tinnitus)</td>
+                        </tr>
+                        <tr>
+                            <td>Instrument (INST)</td>
+                            <td>A tool or other device used for performing a particular medical task such as diagnosis and treatments.</td>
+                            <td>“血壓計” (blood pressure meter), “達文西手臂” (DaVinci Robots), “體脂肪計” (body fat monitor), “雷射手術刀” (laser scalpel) </td>
+                        </tr>
+                        <tr>
+                            <td>Examination (EXAM)</td>
+                            <td>The act of looking at or checking something carefully in order to discover possible diseases.</td>
+                            <td>“聽力檢查” (hearing test), “腦電波圖” (electroencephalography; EEG),  “核磁共振造影” (magnetic resonance imaging; MRI) </td>
+                        </tr>
+                        <tr>
+                            <td>Chemical (CHEM)</td>
+                            <td>Any basic chemical element typically found in the human body.</td>
+                            <td>“去氧核糖核酸” (deoxyribonucleic acid; DNA), “糖化血色素” (glycated hemoglobin), “膽固醇” (cholesterol), “尿酸” (uric acid) </td>
+                        </tr>
+                        <tr>
+                            <td>Disease (DISE)</td>
+                            <td>An illness of people or animals caused by infection or a failure of health rather than by an accident.</td>
+                            <td>“小兒麻痺症” (poliomyelitis; polio), “帕金森氏症” (Parkinson’s disease), “青光眼” (glaucoma), “肺結核” (tuberculosis) </td>
+                        </tr>
+                        <tr>
+                            <td>Drug (DRUG)</td>
+                            <td>Any natural or artificially made chemical used as a medicine</td>
+                            <td>“阿斯匹靈” (aspirin), “普拿疼” (acetaminophen), “青黴素” (penicillin), “流感疫苗” (influenza vaccination)</td>
+                        </tr>
+                        <tr>
+                            <td>Supplement (SUPP)</td>
+                            <td>Something added to something else to improve human health.</td>
+                            <td>“維他命” (vitamin), “膠原蛋白” (collagen), “益生菌” (probiotics), “葡萄糖胺” (glucosamine), “葉黃素” (lutein)</td>
+                        </tr>
+                        <tr>
+                            <td>Treatment (TREAT)</td>
+                            <td>A method of behavior used to treat diseases</td>
+                            <td>“藥物治療” (pharmacotherapy), “胃切除術” (gastrectomy), “標靶治療” (targeted therapy), “外科手術” (surgery)</td>
+                        </tr>
+                        <tr>
+                            <td>Time (TIME)</td>
+                            <td>Element of existence measured in minutes, days, years</td>
+                            <td>“嬰兒期” (infancy), “幼兒時期” (early childhood), “青春期” (adolescence), “生理期” (on one’s period), “孕期” (pregnancy)</td>
+                        </tr>
+                    </table>
                     <div class="blankDiv"></div>
                     <h3>III. Data</h3>
                     <p class="justify">
-                    ●	Training Set: <a href="https://github.com/NCUEE-NLPLab/Chinese-HealthNER-Corpus">Chinese HealthNER Corpus</a> (Lee and Lu, 2021)
-                        It includes 30,692 sentences with a total around 1.5 million characters or 91.7 thousand words. After manual annotation, we have 68,460 named entities across 10 entity types: body, symptom, instrument, examination, chemical, disease, drug, supplement, treatment, and time.<br />
+                    ●	Training Set: <a href="https://github.com/NCUEE-NLPLab/Chinese-HealthNER-Corpus">Chinese HealthNER Corpus</a> (Lee and Lu, 2021)<br />
+                        It includes 30,692 sentences with a total around 1.5 million characters or 91.7 thousand words. After manual annotation, we have 68,460 named entities across 10 entity types: body, symptom, instrument, examination, chemical, disease, drug, supplement, treatment, and time.<br /><br />
                     ●	Test set: at least 3,000 Chinese sentences will be provided for system performance evaluation.<br /><br />
                     The policy of this shared task is an open test. Participating systems are allowed to use other publicly available data for this shared task, but the use of other data should be specified in the final system description paper.</p>
                     <div class="blankDiv"></div>
@@ -1500,31 +1561,30 @@
                     <h3>V. Important Dates</h3>
                     <p class="justify">
                         <ul class="Important">
-                            <li>● Release of training data: (TBC)</li>
-                            <li>● Release of test data: (TBC)</li>
-                            <li>● Testing results submission due: (TBC)</li>
-                            <li>● Release of evaluation results: (TBC)</li>
-                            <li>● System description paper due: (TBC)</li>
-                            <li>● Notification of Acceptance: (TBC)</li>
-                            <li>● Camera-ready deadline: (TBC)</li>
+                            <li>● Release of training data: April 15, 2022</li>
+                            <li>● Release of test data: August 31, 2022</li>
+                            <li>● Testing results submission due: September 2, 2022</li>
+                            <li>● Release of evaluation results: September 5, 2022</li>
+                            <li>● System description paper due: September 20, 2022</li>
+                            <li>● Notification of Acceptance: September 30, 2022</li>
+                            <li>● Camera-ready deadline: October 7, 2022</li>
                         </ul>
                     </p>
                     <div class="blankDiv"></div>
                     <h3>References</h3>
                     <p class="justify">
-                        Hai Leong Chieu, and Hwee Tou Ng (2003). Named entity recognition with a maximum approach. In Proceedings of 7th Conference on Natural Language Learning (CoNLL’03), pp. 160–163.<br />
-                        Jason P. C. Chiu, and Eric Nichols (2016). Named entity recognition with bidirectional LSTM-CNNs. Transactions of the Association for Computational Linguistics, 4:357–370.<br /> 
-                        Jingzhou He, and Houfeng Wang (2008). Chinese named entity recognition and word segmentation based on character. In Proceedings of the 6th SIGHAN Workshop on Chinese Language Processing (SIGHAN’08), pp. 128–132.<br />
-                        Guillaume Lample, Miguel Ballesteros, Sandeep Subramanian, Kazuya Kawakami, and Chris Dyer (2016). Neural architectures for named entity recognition. In Proceedings of the 2016 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT’16), pp. 260–270.<br />
-                        Lung-Hao Lee, and Yi Lu (2021). Multiple Embeddings Enhanced Multi-Graph Neural Networks for Chinese Healthcare Named Entity Recognition. IEEE Journal of Biomedical and Health Informatics, 25(7): 2801- 2810.<br />
-                        Haibo Li, Masato Hagiwara, Qi Li, and Heng Ji (2014). Comparison of the impact of word segmentation on name tagging for Chinese and Japanese. In Proceedings of the 9th International Conference on Language Resources and Evaluation (LREC’14), pp. 2532–2536.<br />
-                        Liyuan Liu, Jingbo Shang, Xiang Ren, Frank F. Xu, Huan Gui, Jian Peng, and Jiawei Han (2018). Empower sequence labeling with task-aware neural language model. In Proceedings of the 32nd AAAI Conference on Artificial Intelligence (AAAI’18), pp. 5253–5260.<br />
-                        Xuezhe Ma and Eduard Hovy (2016). End-to-end sequence labeling via Bi-directional LSTM-CNNs-CRF. In Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (ACL’16), pp. 1064–1074.<br />
-                        Natalia Ponomareva, Ferran. Pla, Antonio Molina, and Paolo Rosso (2007). Biomedical named entity recognition: A poor knowledge HMM-based approach. In Proceedings of the 12th International Conference on Applications of Natural Language to Information Systems (NLDB’07), pp. 382–387.<br />
-                        Chih-Hsuan Wei, Robert Leaman, and Zhiyong Lu (2015). SimConcept: A hybrid approach for simplifying composite named entities in biomedical text. IEEE Journal of Biomedical and Health Informatics, 19(4):1385–1391.<br />
-                        Yue Zhang, and Jie Yang (2018). Chinese NER using lattice LSTM. In Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (ACL’18), pp. 1554–1564.<br />
+                        <li>Hai Leong Chieu, and Hwee Tou Ng (2003). Named entity recognition with a maximum approach. In Proceedings of 7th Conference on Natural Language Learning (CoNLL’03), pp. 160–163.</li>
+                        <li>Jason P. C. Chiu, and Eric Nichols (2016). Named entity recognition with bidirectional LSTM-CNNs. Transactions of the Association for Computational Linguistics, 4:357–370.</li>
+                        <li>Jingzhou He, and Houfeng Wang (2008). Chinese named entity recognition and word segmentation based on character. In Proceedings of the 6th SIGHAN Workshop on Chinese Language Processing (SIGHAN’08), pp. 128–132.</li>
+                        <li>Guillaume Lample, Miguel Ballesteros, Sandeep Subramanian, Kazuya Kawakami, and Chris Dyer (2016). Neural architectures for named entity recognition. In Proceedings of the 2016 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT’16), pp. 260–270.</li>
+                        <li>Lung-Hao Lee, and Yi Lu (2021). Multiple Embeddings Enhanced Multi-Graph Neural Networks for Chinese Healthcare Named Entity Recognition. IEEE Journal of Biomedical and Health Informatics, 25(7): 2801- 2810.</li>
+                        <li>Haibo Li, Masato Hagiwara, Qi Li, and Heng Ji (2014). Comparison of the impact of word segmentation on name tagging for Chinese and Japanese. In Proceedings of the 9th International Conference on Language Resources and Evaluation (LREC’14), pp. 2532–2536.</li>
+                        <li>Liyuan Liu, Jingbo Shang, Xiang Ren, Frank F. Xu, Huan Gui, Jian Peng, and Jiawei Han (2018). Empower sequence labeling with task-aware neural language model. In Proceedings of the 32nd AAAI Conference on Artificial Intelligence (AAAI’18), pp. 5253–5260.</li>
+                        <li>Xuezhe Ma and Eduard Hovy (2016). End-to-end sequence labeling via Bi-directional LSTM-CNNs-CRF. In Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (ACL’16), pp. 1064–1074.</li>
+                        <li>Natalia Ponomareva, Ferran. Pla, Antonio Molina, and Paolo Rosso (2007). Biomedical named entity recognition: A poor knowledge HMM-based approach. In Proceedings of the 12th International Conference on Applications of Natural Language to Information Systems (NLDB’07), pp. 382–387.</li>
+                        <li>Chih-Hsuan Wei, Robert Leaman, and Zhiyong Lu (2015). SimConcept: A hybrid approach for simplifying composite named entities in biomedical text. IEEE Journal of Biomedical and Health Informatics, 19(4):1385–1391.</li>
+                        <li>Yue Zhang, and Jie Yang (2018). Chinese NER using lattice LSTM. In Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (ACL’18), pp. 1554–1564.</li>
                     </p>
-                    <div class="blankDiv"></div>
                 </div>
                 <div class="theLine"></div>
             </div>
