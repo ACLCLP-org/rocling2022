@@ -2366,6 +2366,10 @@ ul.Important li{
 .organization .coLogo img{
   width: 80%;
 }
+.organization .coLogo_sponsor{
+  text-align: left;
+  margin: 0px;
+}
 .organization .coLogo_sponsor img{
   width: 60%;
 }
