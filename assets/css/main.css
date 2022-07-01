@@ -2366,6 +2366,9 @@ ul.Important li{
 .organization .coLogo img{
   width: 80%;
 }
+.organization .coLogo_sponsor img{
+  width: 60%;
+}
 #keynote-speakers, #sharedTask, #google-map-area{
   background: #f3f4f3;
 }
