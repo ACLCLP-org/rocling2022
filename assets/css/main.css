@@ -1118,6 +1118,13 @@ ul.Important li{
 
 .schedule .card-header .time {
   color: #777777;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.schedule .card-header .time_s {
+  color: #777777;
   font-size: 13px;
   margin-bottom: 5px;
 }
